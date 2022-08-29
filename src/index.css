@@ -20,14 +20,45 @@ h1, h2, h3, h4, h5, h6 {
 .booklist {
   display: flex;
   flex-wrap: wrap;
-  padding: 50px;
+  padding: 50px 15px;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 .book {
-  padding: 25px;
+  width: calc(100% / 6);
+  padding: 10px;
+}
+
+.book-inner {
+
+  padding: 15px;
   background-color: #fff;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  margin: 10px;
+  text-align: center;
+  height: 100%;
+}
+
+.book img {
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.book h4 {
+  margin-bottom: 10px;
+}
+
+
+@media (max-width: 1199px) {
+  .book {
+    width: calc(100% / 4);
+  }
+}
+
+@media (max-width: 991px) {
+  .book {
+    width: calc(100% / 3);
+  }
 }
