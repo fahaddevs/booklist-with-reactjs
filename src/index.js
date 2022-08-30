@@ -1,46 +1,62 @@
-import React from 'react'
-import ReactDom from 'react-dom' 
+import React from 'react';
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
 
 // css 
 import './index.css'
 
 
-// setup variable 
-const firstBook = {
-  img : 'https://ds.rokomari.store/rokomari110/ProductNew20190903/130X186/English_Therapy-Saiful_Islam-42e32-215765.jpg',
-  title : 'English Therapy',
-  author : 'Jhon Doe'
-}
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
 
 
-const secondBook = {
-  img : 'https://ds.rokomari.store/rokomari110/ProductNew20190903/130X186/f0836d0b7_158227.jpg',
-  title : 'প্রোগ্রামিংয়ের চৌদ্দগোষ্ঠী',
-  author : 'ঝংকার মাহবুব'
-}
+root.render(
+  <StrictMode>
+    <BookList />
+  </StrictMode>,
+);
+
+
+const books = [
+  {
+    id: 1,
+    img : 'https://ds.rokomari.store/rokomari110/ProductNew20190903/130X186/English_Therapy-Saiful_Islam-42e32-215765.jpg',
+    title : 'English Therapy',
+    author : 'Jhon Doe'
+  },
+  {
+    id: 2,
+    img : 'https://ds.rokomari.store/rokomari110/ProductNew20190903/130X186/f0836d0b7_158227.jpg',
+    title : 'প্রোগ্রামিংয়ের চৌদ্দগোষ্ঠী',
+    author : 'ঝংকার মাহবুব'
+  },
+  {
+    id: 3,
+    img : 'https://ds.rokomari.store/rokomari110/ProductNew20190903/130X186/003aa4162_166987.jpg',
+    title : 'কম্পিউটার প্রোগ্রামিং-প্রথম খণ্ড ',
+    author : 'তামিম শাহরিয়ার সুবিন'
+  }
+]
 
 
 function BookList(){
   return (
     <section className='booklist'>
-      <Book 
-        img={firstBook.img} 
-        title={firstBook.title} 
-        author={firstBook.author} 
-      />
-
-      <Book 
-        img={secondBook.img} 
-        title={secondBook.title} 
-        author={secondBook.author} 
-      />
+      {
+        books.map((book)=>{
+          return (
+            <Book key={book.id} {...book} />
+          )
+        })
+      }
     </section>
   )
 }
 
 const Book = (props) => {
+  console.log(props);
   const {img, title, author} = props;
-  return (
+  return ( 
     <article className='book'>
       <div className='book-inner'>
         <img src={img} alt="book" />
@@ -52,4 +68,4 @@ const Book = (props) => {
 }
 
 
-ReactDom.render(<BookList/>, document.getElementById('root'));
+// ReactDom.render(<BookList/>, document.getElementById('root'));
